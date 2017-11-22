@@ -22,7 +22,7 @@ group :development, :test do
 
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~>3.0'
-  gem 'capybara'
+  gem 'capybara', '~> 2.16', '>= 2.16.1'
   gem 'database_cleaner'
 end
 
