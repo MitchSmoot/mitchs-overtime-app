@@ -1,4 +1,11 @@
 <%= form_for @post, class: "form-horizontal" do |f| %>
+  <%= @post.errors.any? %>
+    <% @post.errors.full_messages.each do |error| %>
+      <%= js add_gritter(error, title: "Opertime App notification", sticky: false) %>
+    <% end %>
+  <% end %>
+
+
 
   <div class="form-group">
     <%= f.label :date, class: "col-sm-2 control-label" %>
@@ -13,3 +20,4 @@
   <%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
 
 <% end %>
+
