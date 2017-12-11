@@ -4,7 +4,7 @@ describe 'navigate' do
 
   before do
     @user = FactoryBot.create(:user)
-    sign_in(@user, scope: :user)
+    login_as(@user, scope: :user)
   end
 
   describe 'index' do
@@ -36,11 +36,13 @@ describe 'navigate' do
     end
   end
 
+
   describe 'delete' do
     it 'can be deleted' do
+      @post = FactoryBot.create(:post)
       visit posts_path
 
-      click_link("delete_post_from_index")
+      click_link("delete_post_#{@post.id}_from_index")
       expect(page.status_code).to eq(200)
     end
   end
@@ -70,27 +72,29 @@ describe 'navigate' do
 
       expect(User.last.posts.last.rationale).to eq("User Association")
     end
+  end
 
     describe 'edit' do
-
       before do
         @post = FactoryBot.create(:post)
       end
-      it 'can be reached by clicking edit on the index page'
 
-      visit posts_path
-      click_link "edit #{@post.id}"
-      expect(page.status_code).to eq(200)
-    end
+      it 'can be reached by clicking edit on index page' do
+        @post = FactoryBot.create(:post)
+        visit posts_path
 
-    it 'can be editied' do
+        click_link("edit_#{@post.id}")
+        expect(page.status_code).to eq(200)
+      end
+
+    it 'can be edited' do
       visit edit_post_path(@post)
 
-      fill_in 'post[date]', width: Date.today
-      fill_in 'post[rationale', with: "Edited Content"
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "Edited Content"
       click_on "Save"
 
-      expect(page).to have_content("Edited content")
+      expect(page).to have_content("Edited Content")
     end
   end
 end
