@@ -41,7 +41,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'gritter', '~> 1.2'
 gem 'administrate', '~> 0.8.1'
 gem 'bourbon', '~> 4.3', '>= 4.3.4'
-
+gem 'pundit', '~> 1.1'
 
 
 
