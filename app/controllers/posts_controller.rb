@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.update(post_params)
-      redirect_to @post, notice: "Your post was etited successfully"
+      redirect_to @post, notice: "Your post was edited successfully"
     else 
       render :edit
     end
