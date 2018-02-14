@@ -31,7 +31,7 @@ describe 'navigate' do
     end
 
     it 'has a scope so that users can only see their own posts' do
-      other_user = User.create(first_name: "hacker", last_name: "man", email: "asdf@blah.com", password: "asdfasdf", password_confirmation: "asdfasdf")
+      other_user = User.create(first_name: "hacker", last_name: "man", email: "asdf@blah.com", password: "asdfasdf", password_confirmation: "asdfasdf", phone: "5555555555")
 
       post_from_other_user = Post.create(date: Date.today, rationale: "This cant be seen", user_id: other_user.id, overtime_request: 3.5 )
       
@@ -67,7 +67,7 @@ describe 'navigate' do
 
   describe 'creation' do
     before do
-      user = User.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "John", last_name: "Carter")
+      user = User.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "John", last_name: "Carter", phone: "5555555555")
       login_as(user, :scope => :user)
       visit new_post_path
     end
