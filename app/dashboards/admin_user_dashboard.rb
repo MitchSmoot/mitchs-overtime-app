@@ -28,6 +28,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
+    :phone,
     :sign_in_count,
     :current_sign_in_at,
     :last_sign_in_at,
@@ -46,5 +47,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :type,
+    :phone
   ].freeze
 end
